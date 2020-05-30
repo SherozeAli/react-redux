@@ -26,10 +26,7 @@ const shopReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         filteredItems: state.collections[action.payload.category].items.filter(
-          (item) => {
-            const { price } = item;
-            return price <= action.payload.price;
-          }
+          (item) => parseInt(item.price) < parseInt(action.payload.price)
         ),
       };
     default:
